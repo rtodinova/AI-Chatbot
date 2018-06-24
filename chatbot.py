@@ -6,22 +6,16 @@ Created on Wed Jun 20 22:32:43 2018
 
 """
 
-import random
-
-from json_parser import JsonParser
+from parsers import JsonParser, ResponseParser
 
 class Chatbot:
     
     def __init__(self, responses):
         self.responses = responses
+        self.response = ResponseParser()
     
-    def respond(self,message):
-        if message in self.responses:
-            return random.choice(self.responses[message])
-        elif message.endswith('?'):
-            return random.choice(self.responses["question"])
-        else:
-            return random.choice(self.responses["statement"])
+    def respond(self, user_input):
+        return self.response.search_answer_in_responses(self.responses, user_input)
             
 def main():
     parser = JsonParser()
