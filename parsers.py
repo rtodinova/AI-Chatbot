@@ -14,9 +14,11 @@ class JsonParser:
     def __init__(self):
         self.file_name = 'chatbot_knowledge.json'
         
+        
     def parse_to_json(self, dictionary_with_responses):
         with open(self.file_name, 'w') as json_file:
             json.dump(dictionary_with_responses, json_file)
+            
             
     def parse_to_dictionary(self):
         with open(self.file_name, 'r') as json_file:
@@ -28,11 +30,21 @@ class ResponseParser:
     def __init__(self):
         self.previous_user_input = ''
         self.greetings = 'hello|hi|hllo|helo'
+        
     
     def to_lower(self, question):
         return question.lower()
     
+    
     def search_answer_in_responses(self, responses, user_input):
+        '''
+        Args:
+            param1: dictionary with possible responses
+            param2: string with the user input
+            
+        Returns:
+            This function return a string - random response of the chatbot
+        '''
         user_input = self.to_lower(user_input)
         if user_input in self.greetings:
             self.previous_user_input = user_input
@@ -50,12 +62,23 @@ class ResponseParser:
         else:
             self.previous_user_input = user_input
             return random.choice(responses["statement"])
+        
       
     def get_the_correct_answer_from_user(self):
         correct_answer = input('What should be my answer? \nUSER: ')
         return correct_answer
     
+    
     def save_the_correct_answer(self, responses, correct_answer, previous_user_input):
+        '''
+        This function is used for learning based on the user input.
+        
+        Args:
+            param1: dictionary with possible responses
+            param2: string - correct answer from the user's input
+            param3: string - previous user message/question
+            
+        '''
         if previous_user_input in responses.keys():
             responses[self.previous_user_input].append(correct_answer)
         else:

@@ -38,5 +38,6 @@ class TestResponseParser(unittest.TestCase):
         user_input="you're georgeous"
         self.assertTrue(self, self.response_parser.search_answer_in_responses(responses, user_input) in responses['statement'] )
 
+
 if __name__ == '__main__':
     unittest.main()
