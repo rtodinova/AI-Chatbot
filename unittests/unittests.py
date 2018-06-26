@@ -6,7 +6,11 @@ Created on Mon Jun 25 00:07:41 2018
 """
 
 import unittest
-from parsers import ResponseParser
+import sys
+
+sys.path.append("..") # Adds higher directory to python modules path so that we can import the parses
+
+from chatbot.parsers import ResponseParser
 
 
 responses = {"hello": ["Hi", "Hello, nice to meet you"], 
