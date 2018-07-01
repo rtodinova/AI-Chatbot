@@ -14,6 +14,10 @@ class Chatbot:
     def __init__(self, responses):
         self.responses = responses
         self.response = ResponseParser()
+        
+        
+    def to_lower(self, question):
+        return question.lower()
 
 
     def respond(self, user_input):
@@ -26,7 +30,11 @@ class ChatbotRunner:
         self.parser = JsonParser()
         responses = self.parser.parse_to_dictionary()
         self.chatbot = Chatbot(responses)
-
+        
+        
+    def get_type_of_chatbot_from_user_input(self):
+        user_input = input('Hello there! We\'re three chatbots that can do different things. My name is Eve and I\'m a talking chatbot. My friends are Steve and ')
+        return user_input
 
     def run(self):
         user_message = input("USER: ")

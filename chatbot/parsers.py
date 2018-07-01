@@ -11,8 +11,8 @@ import random
 
 class JsonParser:
     
-    def __init__(self):
-        self.file_name = 'chatbot_knowledge.json'
+    def __init__(self, file_name):
+        self.file_name = file_name
         
         
     def parse_to_json(self, dictionary_with_responses):
